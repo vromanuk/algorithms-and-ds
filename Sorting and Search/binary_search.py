@@ -3,10 +3,10 @@ from typing import List
 
 def recursive_binary_search(items: List[int], target: int) -> bool:
     sorted_items = sorted(items)
-    middle = len(sorted_items) // 2
     if len(sorted_items) == 0:
         return False
     else:
+        middle = len(sorted_items) // 2
         if sorted_items[middle] == target:
             return True
         else:
