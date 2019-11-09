@@ -8,7 +8,7 @@ def insertion_sort(numbers: List[int]):
         position = index
         while position > 0 and numbers[position - 1] > current:
             numbers[position] = numbers[position - 1]
-            position = position - 1
+            position -= 1
         numbers[position] = current
 
 
