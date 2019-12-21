@@ -1,3 +1,7 @@
+"""
+A linear data structure which follows a particular order LIFO (Last In First Out)
+"""
+
 from collections import deque
 
 

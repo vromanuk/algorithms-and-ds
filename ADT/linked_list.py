@@ -1,3 +1,8 @@
+"""
+A linear data structure, in which elements are not stored at contiguous memory locations.
+"""
+
+
 class Node:
     def __init__(self, value):
         self.value = value
