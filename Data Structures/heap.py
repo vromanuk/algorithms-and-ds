@@ -15,7 +15,7 @@ class BinaryHeap:
             i = i // 2
 
     def heapify_down(self, i: int) -> None:
-        while (i * 2) <= self._size:  # i*2 => next child
+        while (i * 2) <= self._size:  # i*2 => left child
             min_child_idx = self.get_min_child_idx(i)
             if self._heap[i] > self._heap[min_child_idx]:
                 self._heap[i], self._heap[min_child_idx] = self._heap[min_child_idx], self._heap[i]
@@ -43,13 +43,28 @@ class BinaryHeap:
         self.heapify_down(1)
         return min_value
 
-    def build_heap(self, _list):
-        i = len(_list) // 2
-        self._size = len(_list)
+    def build_heap(self, _list: list) -> None:
+        length = len(_list)
+        i = length // 2
+        self._size = length
         self._heap = [0] + _list[:]
         while i > 0:
             self.heapify_down(i)
             i -= 1
+
+
+class PriorityQueue(BinaryHeap):
+    def __init__(self, values: list):
+        super().__init__()
+        self._binary_heap = BinaryHeap()
+        self._binary_heap.build_heap(values)
+
+    @property
+    def min_v(self):
+        return self._binary_heap._heap[1]
+
+    def extract_min(self):
+        return self._binary_heap.remove_min()
 
 
 if __name__ == '__main__':
@@ -60,3 +75,7 @@ if __name__ == '__main__':
     print(binary_heap.remove_min())
     print(binary_heap.remove_min())
     print(binary_heap.remove_min())
+    priority_queue = PriorityQueue([9, 5, 6, 2, 3])
+    print(priority_queue.min_v)
+    print(priority_queue.extract_min())
+    print(priority_queue.min_v)
