@@ -116,3 +116,4 @@ if __name__ == '__main__':
     assert bst.find_node(10) is True
     assert bst.find_node(8) is True
     assert bst.find_node(0) is False
+    assert bst.min_element is 8
