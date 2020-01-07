@@ -33,28 +33,28 @@ class BinaryTree:
             new_node = BinaryTree(cargo)
             new_node.right_child, self.right_child = self.right_child, new_node
 
-    def traverse_tree_pre_order(self):
+    def pre_order_traversal(self):
         print(self.cargo)
 
         if self.left_child:
-            self.left_child.traverse_tree_pre_order()
+            self.left_child.pre_order_traversal()
         if self.right_child:
-            self.right_child.traverse_tree_pre_order()
+            self.right_child.pre_order_traversal()
 
-    def traverse_tree_in_order(self):
+    def in_order_traversal(self):
         if self.left_child:
-            self.left_child.traverse_tree_in_order()
+            self.left_child.in_order_traversal()
 
         print(self.cargo)
 
         if self.right_child:
-            self.right_child.traverse_tree_in_order()
+            self.right_child.in_order_traversal()
 
-    def traverse_tree_post_order(self):
+    def post_order_traversal(self):
         if self.left_child:
-            self.left_child.traverse_tree_post_order()
+            self.left_child.post_order_traversal()
         if self.right_child:
-            self.right_child.traverse_tree_post_order()
+            self.right_child.post_order_traversal()
         print(self.cargo)
 
     def breadth_first_search(self):
