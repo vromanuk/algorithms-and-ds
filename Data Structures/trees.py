@@ -16,45 +16,45 @@ from typing import Union, Optional
 class BinaryTree:
     def __init__(self, cargo: Union[str, int]):
         self.cargo = cargo
-        self.left_child: Optional[BinaryTree] = None
-        self.right_child: Optional[BinaryTree] = None
+        self.left: Optional[BinaryTree] = None
+        self.right: Optional[BinaryTree] = None
 
     def insert_left(self, cargo: int) -> None:
-        if not self.left_child:
-            self.left_child = BinaryTree(cargo)
+        if not self.left:
+            self.left = BinaryTree(cargo)
         else:
             new_node = BinaryTree(cargo)
-            new_node.left_child, self.left_child = self.left_child, new_node
+            new_node.left, self.left = self.left, new_node
 
     def insert_right(self, cargo: int) -> None:
-        if not self.right_child:
-            self.right_child = BinaryTree(cargo)
+        if not self.right:
+            self.right = BinaryTree(cargo)
         else:
             new_node = BinaryTree(cargo)
-            new_node.right_child, self.right_child = self.right_child, new_node
+            new_node.right, self.right = self.right, new_node
 
     def pre_order_traversal(self):
         print(self.cargo)
 
-        if self.left_child:
-            self.left_child.pre_order_traversal()
-        if self.right_child:
-            self.right_child.pre_order_traversal()
+        if self.left:
+            self.left.pre_order_traversal()
+        if self.right:
+            self.right.pre_order_traversal()
 
     def in_order_traversal(self):
-        if self.left_child:
-            self.left_child.in_order_traversal()
+        if self.left:
+            self.left.in_order_traversal()
 
         print(self.cargo)
 
-        if self.right_child:
-            self.right_child.in_order_traversal()
+        if self.right:
+            self.right.in_order_traversal()
 
     def post_order_traversal(self):
-        if self.left_child:
-            self.left_child.post_order_traversal()
-        if self.right_child:
-            self.right_child.post_order_traversal()
+        if self.left:
+            self.left.post_order_traversal()
+        if self.right:
+            self.right.post_order_traversal()
         print(self.cargo)
 
     def breadth_first_search(self):
@@ -63,39 +63,39 @@ class BinaryTree:
         while not queue.empty():
             current_node: BinaryTree = queue.get()
             print(current_node.cargo)
-            if current_node.left_child:
-                queue.put(current_node.left_child)
-            if current_node.right_child:
-                queue.put(current_node.right_child)
+            if current_node.left:
+                queue.put(current_node.left)
+            if current_node.right:
+                queue.put(current_node.right)
 
 
 class BinarySearchTree:
     def __init__(self, cargo: Union[int, str]):
         self.cargo = cargo
-        self.left_child: Optional[BinarySearchTree] = None
-        self.right_child: Optional[BinarySearchTree] = None
+        self.left: Optional[BinarySearchTree] = None
+        self.right: Optional[BinarySearchTree] = None
 
     def insert_node(self, cargo: Union[int, str]) -> None:
-        if cargo <= self.cargo and self.left_child:
-            self.left_child.insert_node(cargo)
+        if cargo <= self.cargo and self.left:
+            self.left.insert_node(cargo)
         elif cargo <= self.cargo:
-            self.left_child = BinarySearchTree(cargo)
-        elif cargo > self.cargo and self.right_child:
-            self.right_child.insert_node(cargo)
+            self.left = BinarySearchTree(cargo)
+        elif cargo > self.cargo and self.right:
+            self.right.insert_node(cargo)
         else:
-            self.right_child = BinarySearchTree(cargo)
+            self.right = BinarySearchTree(cargo)
 
     def find_node(self, target: Union[int, str]) -> bool:
-        if target < self.cargo and self.left_child:
-            return self.left_child.find_node(target)
-        if target > self.cargo and self.right_child:
-            return self.right_child.find_node(target)
+        if target < self.cargo and self.left:
+            return self.left.find_node(target)
+        if target > self.cargo and self.right:
+            return self.right.find_node(target)
         return target == self.cargo
 
     @property
     def min_element(self):
-        if self.left_child:
-            return self.left_child.min_element
+        if self.left:
+            return self.left.min_element
         else:
             return self.cargo
 
