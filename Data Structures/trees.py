@@ -68,6 +68,21 @@ class BinaryTree:
             if current_node.right:
                 queue.put(current_node.right)
 
+    def iterative_in_order_traversal(self):
+        stack = list()
+        current = self
+        while True:
+            if current:
+                stack.append(current)
+                current = current.left
+            elif stack:
+                current = stack.pop()
+                print(current.cargo)
+                current = current.right
+            else:
+                break
+        print()
+
 
 class BinarySearchTree:
     def __init__(self, cargo: Union[int, str]):
@@ -117,3 +132,10 @@ if __name__ == '__main__':
     assert bst.find_node(8) is True
     assert bst.find_node(0) is False
     assert bst.min_element is 8
+    print('Testing iterative in order traversal')
+    root = BinaryTree(1)
+    root.left = BinaryTree(2)
+    root.right = BinaryTree(3)
+    root.left.left = BinaryTree(4)
+    root.left.right = BinaryTree(5)
+    root.iterative_in_order_traversal()
